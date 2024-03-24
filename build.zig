@@ -12,5 +12,24 @@ pub fn build(b: *std.Build) void {
     lib.addIncludePath(.{ .path = "lib/include" });
     lib.addIncludePath(.{ .path = "lib/src" });
 
+    lib.installHeadersDirectoryOptions(.{
+        .source_dir = Path{ .path = "lib/include" },
+        .install_dir = .header,
+        .install_subdir = "",
+        .exclude_extensions = &.{
+            "am",
+            "gitignore",
+            "md",
+            "rs",
+            "js",
+            "txt",
+            "ts",
+            "c",
+            "json",
+            "npmignore"
+        },
+    });
+
+
     b.installArtifact(lib);
 }

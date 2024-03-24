@@ -1,5 +1,7 @@
 const std = @import("std");
 
+const Path = std.Build.LazyPath;
+
 pub fn build(b: *std.Build) void {
     var lib = b.addStaticLibrary(.{
         .name = "tree-sitter",
